@@ -14,7 +14,7 @@ const Container = styled.div`
   align-items: center;
   gap: 1rem;
 
-  padding: 0 0.8rem 0.8rem;
+  padding: 0 0.8rem 1.2rem;
   background-color: black;
   color: rgb(125, 125, 125);
 
@@ -22,16 +22,16 @@ const Container = styled.div`
   margin: 0 auto;
 
   @media screen and ${devices.mobileL} {
-    padding: 0 1.2rem 1.2rem;
-    /* font-size: 4.4rem; */
+    padding: 0 1.2rem 3rem;
   }
 
   @media screen and ${devices.tablet} {
-    /* font-size: 8rem; */
+    flex-direction: row;
+    align-items: flex-start;
   }
 
   @media screen and ${devices.laptop} {
-    /* font-size: 11rem; */
+    gap: 3rem;
   }
 `;
 
@@ -59,10 +59,13 @@ const Title = styled.div`
 
 const TopGroup = styled.div`
   flex: 1;
+  width: 100%;
+  background-color: inherit;
 `;
 
 const BottomGroup = styled.div`
   flex: 1;
+  width: 100%;
 `;
 
 /**------------ */

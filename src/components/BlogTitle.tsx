@@ -11,7 +11,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  font-size: 3rem;
+  font-size: 2.9rem;
   font-weight: 900;
 
   padding: 0 0.8rem 0.8rem;
@@ -48,7 +48,7 @@ const Title = styled.div`
   }
 
   @media screen and ${devices.tablet} {
-    letter-spacing: 0.7rem;
+    letter-spacing: 0.5rem;
     line-height: 8rem;
   }
 
