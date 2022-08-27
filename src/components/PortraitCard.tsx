@@ -37,8 +37,11 @@ const ContentHeader = styled.div`
   font-size: 1rem;
   color: #edebeb;
   font-weight: 600;
+  transition: all 0.2s linear;
+
   &:hover {
     cursor: pointer;
+    color: grey;
   }
 
   @media screen and ${devices.mobileL} {

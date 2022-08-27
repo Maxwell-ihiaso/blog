@@ -62,6 +62,9 @@ const Brand = styled.div`
     rgba(252, 176, 69, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fd1d1d",endColorstr="#fcb045",GradientType=1);
+  &:hover {
+    cursor: pointer;
+  }
 
   @media screen and ${devices.mobileL} {
     padding: 0.5rem 0.625rem;
@@ -81,6 +84,12 @@ const MenuItems = styled.ul`
 const MenuItem = styled.li`
   text-transform: uppercase;
   margin: 0 0.5rem;
+  transition: all 0.2s linear;
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+  }
 
   @media screen and ${devices.laptop} {
     margin: 0 1rem;
@@ -105,6 +114,14 @@ const SocialIcons = styled.div`
 
   @media screen and ${devices.laptop} {
     width: 12rem;
+  }
+`;
+
+const WithHover = styled.div`
+  transition: all 0.2s linear;
+  &:hover {
+    cursor: pointer;
+    color: #fff;
   }
 `;
 
@@ -143,10 +160,18 @@ const Header = () => {
         </MenuButton>
 
         <SocialIcons>
-          <FiTwitter />
-          <FiInstagram />
-          <FiGithub />
-          <BsMedium />
+          <WithHover>
+            <FiTwitter />
+          </WithHover>
+          <WithHover>
+            <FiInstagram />
+          </WithHover>
+          <WithHover>
+            <FiGithub />
+          </WithHover>
+          <WithHover>
+            <BsMedium />
+          </WithHover>
         </SocialIcons>
       </SocialIconGroup>
     </Container>
