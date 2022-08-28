@@ -51,7 +51,7 @@ const ContentHeader = styled.div`
 
 const ContentBody = styled.div`
   margin: 0.5rem 0;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   opacity: 0.8;
   display: none;
 

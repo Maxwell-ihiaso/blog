@@ -18,9 +18,7 @@ const Container = styled.article`
 `;
 
 const Image = styled.img`
-  flex: 1;
-  /* width: 8rem; */
-  /* width: 70%; */
+  flex: 0 1 auto;
   height: 80%;
 `;
 
