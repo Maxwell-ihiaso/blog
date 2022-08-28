@@ -86,7 +86,18 @@ const LandscapeCard = () => {
             ke industri
           </ContentHeader>
         </Content>
-        <Image src="/images/blog-photo-2.jpg" alt="torchLight-blog" />
+        <Image src="/images/blog-photo-4.jpg" alt="torchLight-blog" />
+      </Container>
+
+      <Container>
+        <Content>
+          <ContentDate>march 27, 2022</ContentDate>
+          <ContentHeader>
+            Mungkin yang kamu butuhkan saat ini bukan lagi latihan tapi terjun
+            ke industri
+          </ContentHeader>
+        </Content>
+        <Image src="/images/blog-photo-5.jpg" alt="torchLight-blog" />
       </Container>
     </>
   );

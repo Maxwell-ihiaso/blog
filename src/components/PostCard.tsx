@@ -65,7 +65,7 @@ const ContentBody = styled.div`
 const PostCard = () => {
   return (
     <Container>
-      <Image src="/images/blog-photo-1.jpg" alt="torchLight-blog" />
+      <Image src="/images/blog-photo-3.jpg" alt="torchLight-blog" />
 
       <Content>
         <ContentDate>january 11, 2022</ContentDate>

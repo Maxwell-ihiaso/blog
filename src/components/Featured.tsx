@@ -35,28 +35,6 @@ const Container = styled.div`
   }
 `;
 
-const Title = styled.div`
-  border: 2px solid rgba(128, 128, 128, 0.2);
-  border-left: 0;
-  border-right: 0;
-  word-spacing: 1.3rem;
-  letter-spacing: 0.4rem;
-  line-height: 4rem;
-
-  @media screen and ${devices.mobileL} {
-    line-height: 5rem;
-  }
-
-  @media screen and ${devices.tablet} {
-    letter-spacing: 0.7rem;
-    line-height: 8rem;
-  }
-
-  @media screen and ${devices.laptop} {
-    line-height: 11rem;
-  }
-`;
-
 const TopGroup = styled.div`
   flex: 1;
   width: 100%;
