@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { devices } from "../devices";
+import useFetch from "../utils/useFetch";
 
 /** PORTRAIT-CARD STYLES */
 
@@ -63,41 +64,45 @@ const ContentHeader = styled.div`
 /**---------------- */
 
 const LandscapeCard = () => {
+  const { meta, data, error, isLoading } = useFetch(
+    "/blogposts?populate=image"
+  );
+
+  if (isLoading) return <Container>Loading...</Container>;
+  if (error.message) return <Container>{error.message}</Container>;
+
+  const num = meta && Math.floor(Math.random() * meta.pagination.total);
   return (
-    <>
-      <Container>
-        <Content>
-          <ContentDate>march 27, 2022</ContentDate>
-          <ContentHeader>
-            Mungkin yang kamu butuhkan saat ini bukan lagi latihan tapi terjun
-            ke industri
-          </ContentHeader>
-        </Content>
-        <Image src="/images/blog-photo-2.jpg" alt="torchLight-blog" />
-      </Container>
+    <section>
+      {data
+        .slice(
+          num < meta.pagination.total - 3 ? num : num - 3,
+          num < meta.pagination.total - 3 ? num + 3 : num
+        )
+        .map((post) => {
+          const { title, createdAt, image } = post.attributes;
 
-      <Container>
-        <Content>
-          <ContentDate>march 27, 2022</ContentDate>
-          <ContentHeader>
-            Mungkin yang kamu butuhkan saat ini bukan lagi latihan tapi terjun
-            ke industri
-          </ContentHeader>
-        </Content>
-        <Image src="/images/blog-photo-4.jpg" alt="torchLight-blog" />
-      </Container>
-
-      <Container>
-        <Content>
-          <ContentDate>march 27, 2022</ContentDate>
-          <ContentHeader>
-            Mungkin yang kamu butuhkan saat ini bukan lagi latihan tapi terjun
-            ke industri
-          </ContentHeader>
-        </Content>
-        <Image src="/images/blog-photo-5.jpg" alt="torchLight-blog" />
-      </Container>
-    </>
+          return (
+            <Container>
+              <Content>
+                <ContentDate>
+                  {new Date(createdAt).toLocaleDateString("en-us", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </ContentDate>
+                <ContentHeader>{title}</ContentHeader>
+              </Content>
+              <Image
+                src={`http://localhost:1337${image.data.attributes.formats.small.url}`}
+                alt={`http://localhost:1337${image.data.attributes.formats.small.name}`}
+              />
+            </Container>
+          );
+        })}
+    </section>
   );
 };
 

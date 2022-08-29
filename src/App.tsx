@@ -7,7 +7,11 @@ function App() {
       <div className="App">
         <Routes>
           {pages.map((page: IRoute) => (
-            <Route path={page.path} element={<page.element />} />
+            <Route
+              key={page.path}
+              path={page.path}
+              element={<page.element />}
+            />
           ))}
         </Routes>
       </div>

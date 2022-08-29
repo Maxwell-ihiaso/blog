@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { devices } from "../devices";
+import useFetch from "../utils/useFetch";
 
 /** PORTRAIT-CARD STYLES */
 
@@ -61,23 +62,42 @@ const ContentBody = styled.div`
 /**---------------- */
 
 const PortraitCard = () => {
-  return (
-    <Container>
-      <Image src="/images/blog-photo-1.jpg" alt="torchLight-blog" />
+  const { meta, data, error, isLoading } = useFetch(
+    "/blogposts?populate=image"
+  );
 
-      <Content>
-        <ContentDate>january 11, 2022</ContentDate>
-        <ContentHeader>
-          Eksplorasi design untuk melamar pekerjaan UI Designer
-        </ContentHeader>
-        <ContentBody>
-          He took a sip of the drink. He wasn't sure whether he liked it or not,
-          but at this moment it didn't matter. She had made it especially for
-          him so he would have forced it down even if he had absolutely hated
-          it.
-        </ContentBody>
-      </Content>
-    </Container>
+  if (isLoading) return <Container>Loading...</Container>;
+  if (error.message) return <Container>{error.message}</Container>;
+
+  const num = meta && Math.floor(Math.random() * meta.pagination.total);
+  return (
+    <>
+      {data.slice(num, num + 1).map((post) => {
+        const { title, createdAt, image, body } = post.attributes;
+
+        return (
+          <Container>
+            <Image
+              src={`http://localhost:1337${image.data.attributes.formats.small.url}`}
+              alt={`http://localhost:1337${image.data.attributes.formats.small.name}`}
+            />
+
+            <Content>
+              <ContentDate>
+                {new Date(createdAt).toLocaleDateString("en-us", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </ContentDate>
+              <ContentHeader>{title} </ContentHeader>
+              <ContentBody>{body.substring(0, 200)}...</ContentBody>
+            </Content>
+          </Container>
+        );
+      })}
+    </>
   );
 };
 

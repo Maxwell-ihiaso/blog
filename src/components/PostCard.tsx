@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { devices } from "../devices";
+import { IPostCard } from "../interfaces";
 
 /** PORTRAIT-CARD STYLES */
 
@@ -62,22 +63,22 @@ const ContentBody = styled.div`
 
 /**---------------- */
 
-const PostCard = () => {
+const PostCard = ({ imgUrl, altText, createdAt, title, body }: IPostCard) => {
   return (
     <Container>
-      <Image src="/images/blog-photo-3.jpg" alt="torchLight-blog" />
+      <Image src={`http://localhost:1337${imgUrl}`} alt={altText} />
 
       <Content>
-        <ContentDate>january 11, 2022</ContentDate>
-        <ContentHeader>
-          Eksplorasi design untuk melamar pekerjaan UI Designer
-        </ContentHeader>
-        <ContentBody>
-          He took a sip of the drink. He wasn't sure whether he liked it or not,
-          but at this moment it didn't matter. She had made it especially for
-          him so he would have forced it down even if he had absolutely hated
-          it.
-        </ContentBody>
+        <ContentDate>
+          {new Date(createdAt).toLocaleDateString("en-us", {
+            weekday: "long",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </ContentDate>
+        <ContentHeader>{title}</ContentHeader>
+        <ContentBody>{body.substring(0, 150)}...</ContentBody>
       </Content>
     </Container>
   );

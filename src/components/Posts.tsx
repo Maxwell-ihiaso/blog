@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { devices } from "../devices";
+import useFetch from "../utils/useFetch";
 import PostCard from "./PostCard";
 
 const Container = styled.div`
@@ -24,20 +25,28 @@ const BlogPost = styled.article`
 /**---------------- */
 
 const Posts = () => {
+  const { data, error, isLoading } = useFetch("/blogposts?populate=image");
+
+  if (isLoading) return <Container>Loading...</Container>;
+  if (error.message) return <Container>{error.message}</Container>;
+
   return (
     <Container>
-      <BlogPost>
-        <PostCard />
-      </BlogPost>
-      <BlogPost>
-        <PostCard />
-      </BlogPost>
-      <BlogPost>
-        <PostCard />
-      </BlogPost>
-      <BlogPost>
-        <PostCard />
-      </BlogPost>
+      {data.map((post) => {
+        const { title, body, createdAt, image } = post.attributes;
+
+        return (
+          <BlogPost key={post.id}>
+            <PostCard
+              createdAt={createdAt}
+              title={title}
+              body={body}
+              imgUrl={image.data.attributes.formats.small.url}
+              altText={image.data.attributes.formats.small.name}
+            />
+          </BlogPost>
+        );
+      })}
     </Container>
   );
 };
