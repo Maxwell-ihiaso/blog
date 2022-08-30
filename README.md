@@ -1,3 +1,11 @@
+# Backend is served on heroku and built with [Strapi](https://secure-ravine-59876.herokuapp.com/)
+
+- [source code](https://github.com/Maxwell-ihiaso/blog-backend)
+
+---
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
