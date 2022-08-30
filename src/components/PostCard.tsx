@@ -66,7 +66,10 @@ const ContentBody = styled.div`
 const PostCard = ({ imgUrl, altText, createdAt, title, body }: IPostCard) => {
   return (
     <Container>
-      <Image src={`http://localhost:1337${imgUrl}`} alt={altText} />
+      <Image
+        src={`https://secure-ravine-59876.herokuapp.com${imgUrl}`}
+        alt={altText}
+      />
 
       <Content>
         <ContentDate>

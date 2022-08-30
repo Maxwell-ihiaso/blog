@@ -96,8 +96,8 @@ const LandscapeCard = () => {
                 <ContentHeader>{title}</ContentHeader>
               </Content>
               <Image
-                src={`http://localhost:1337${image.data.attributes.formats.small.url}`}
-                alt={`http://localhost:1337${image.data.attributes.formats.small.name}`}
+                src={`https://secure-ravine-59876.herokuapp.com${image.data.attributes.formats.small.url}`}
+                alt={`https://secure-ravine-59876.herokuapp.com${image.data.attributes.formats.small.name}`}
               />
             </Container>
           );
